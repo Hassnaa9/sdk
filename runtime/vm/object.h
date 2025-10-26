@@ -3250,7 +3250,7 @@ class Function : public Object {
 #if defined(DART_PRECOMPILED_RUNTIME)
     return static_cast<CodePtr>(Object::null());
 #else
-    return untag()->unoptimized_code();
+    return untag()->unoptimized_code<std::memory_order_acquire>();
 #endif
   }
   void set_unoptimized_code(const Code& value) const;

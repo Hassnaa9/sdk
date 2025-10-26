@@ -8546,7 +8546,7 @@ void Function::set_unoptimized_code(const Code& value) const {
 #else
   DEBUG_ASSERT(IsMutatorOrAtDeoptSafepoint());
   ASSERT(value.IsNull() || !value.is_optimized());
-  untag()->set_unoptimized_code(value.ptr());
+  untag()->set_unoptimized_code<std::memory_order_release>(value.ptr());
 #endif
 }
 
